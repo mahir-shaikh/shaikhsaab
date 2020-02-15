@@ -1,0 +1,150 @@
+/*Added Comment since blank file gets deleted or does not get commited*/
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;margin:0}
+.mySlides {display:none}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.slideshow-container > .row{
+    height: 100%;
+    width : 95%;
+}
+
+/* Next & previous buttons */
+.prev-btn-wrapper, .next-btn-wrapper{
+    margin: auto 0px;
+}
+
+.prev-btn, .next-btn{
+    width: 40px;
+	height: 40px;
+    margin: auto;
+	border-radius: 50%;
+	cursor: pointer;
+	position: relative;
+	text-align: center;
+	font-size: 1.5em;
+    padding-top: 0.185em;
+	border: solid 3px #005495;
+    font-weight: 900;
+}
+
+.prev-btn:hover{
+    background-color: #005495;
+    color:#FFF;
+}
+
+.next-btn:hover{
+    background-color: #005495;
+    color:#FFF;
+}
+
+.fa-angle-left:before {
+    content: "\F104";
+    left: -2px;
+    position: relative;
+}
+
+.fa-angle-right:before {
+    content: "\F105";
+    position: relative;
+    right: -2px;
+}
+
+/* Description text */
+.slideshow-container .slide-description {
+  /*color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;*/
+  height: 16.6666667%;
+}
+.slide-description p{
+    margin: auto;
+}
+
+/* Title */
+.slideshow-container .slide-title{
+    font-weight: 600;
+    font-size: 1.4em;
+    color: #025aa5;
+    text-transform: uppercase;
+    height: 8.333333333%;
+}
+
+.slide-title p{
+    margin: 0px auto;
+}
+
+/* Image */
+.slideshow-container .slide-image{
+    /*font-weight: 600;
+    font-size: 1.4em;
+    color: #025aa5;
+    text-transform: uppercase;*/
+    height: 75%;
+}
+
+.slide-image img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin: auto;
+}
+
+.slide-image .carousel.slide{
+    width:100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide-image .carousel-inner{
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.carousel-inner .carousel-item{
+    height: 100%;
+}
+
+.carousel-item img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+    background-color: #025aa5;
+    width: 5%;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}

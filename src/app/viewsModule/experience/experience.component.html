@@ -1,0 +1,10 @@
+<div class="experience-modal" [class.modalShow]="modalShow"></div>
+<div class="experience animated attachedRight" [class.slideOutRight]="isClosing" [class.slideInRight]="isOpening" [class.expanded]="expanded">
+    <div class="experience-close-btn col-xs-12">
+        <div (click)="onClose()" class="experience-close fa fa-times"></div>
+    </div>
+	<p class="experience-title">Experience </p>
+    <div class="experience-content">
+        <experience-data></experience-data>
+    </div>
+</div>

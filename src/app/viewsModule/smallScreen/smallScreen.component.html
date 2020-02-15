@@ -1,0 +1,15 @@
+<div class="smallScreen-modal" [class.modalShow]="modalShow"></div>
+<div class="smallScreen animated attachedBottom" [class.slideOutDown]="isClosing" [class.slideInUp]="isOpening" [class.expanded]="expanded">
+    <div class="smallScreen-close-btn col-xs-12">
+        <div (click)="onClose()" class="smallScreen-close fa fa-times"></div>
+    </div>
+    <div class="row note-container">
+      <p class="col-12"><span class="bold">Note</span> : To have the complete experience please view it on iPad/PC.</p>
+    </div>
+    <div class="smallScreen-content">
+        <social-component></social-component>
+    </div>
+    <div class="row note-container">
+      <p class="col-12"><span class="bold">Note</span> : To have the complete experience please view it on iPad/PC.</p>
+    </div>
+</div>

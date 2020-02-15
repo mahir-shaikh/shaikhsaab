@@ -1,0 +1,45 @@
+<div class="slideshow-container">
+      <div class="row">
+        <div class="col-sm-1 prev-btn-wrapper">
+            <div (click)="PreviousSlide()" class="prev-btn fa fa-angle-left"></div>
+        </div>
+        <div class="col-sm-10">
+          <div class="row slide-title">
+            <p>{{currentTitle}}</p>
+          </div>
+
+          <div class="row slide-image" *ngIf="!isImageArray">
+            <img src="{{currentImage}}">
+          </div>
+
+          
+          <div class="row slide-image" *ngIf="isImageArray">
+            <div class="carousel slide">              
+              <div class="carousel-inner">
+
+                <div class="carousel-item" *ngFor="let ImageItem of ImageArray; let i = index; let isFirst = first"
+                           [class.active]="ImageIndex == i" [class.active]="isFirst">
+                  <img src={{ImageItem}}>
+                </div>
+              </div>
+              <a class="carousel-control-prev" role="button" (click)="PreviousImage()">
+                <span class="carousel-control-prev-icon"></span>
+              </a>
+              <a class="carousel-control-next" role="button" (click)="NextImage()">
+                <span class="carousel-control-next-icon"></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="row slide-description">
+            <p [innerHTML]="currentDescription"></p>
+          </div>
+
+        </div>
+        <div class="col-sm-1  next-btn-wrapper">
+            <div (click)="NextSlide()" class="next-btn fa fa-angle-right"></div>
+        </div>
+        
+      </div>
+
+</div>     

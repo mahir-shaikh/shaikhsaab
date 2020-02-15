@@ -1,0 +1,87 @@
+:host {
+    display: block;
+    height: 100%;
+}
+.social-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.text-wrapper{
+    text-align: center;
+    display: flex;
+    justify-content: center;    
+    flex-direction: column;
+}
+
+.heading-text{
+    font-size: 2rem;
+    font-weight: 500;
+    color: #005495;
+    margin: 20px auto;
+}
+
+.sub-heading-text{
+    font-size: 16px;
+    font-weight: 500;
+    color: #aaa;
+    margin: 20px auto;
+}
+
+.social-media-wrapper{
+    flex: 1;
+}
+
+.single-social-media-container{
+    text-align: center;
+    font-size: 5rem;
+    align-self: center;
+}
+
+.phone-container{
+    color: #000;
+}
+
+.mail-container{
+    color: #DD4B39;
+}
+
+.facebook-container{
+    color: #3B5998;
+}
+
+.instagram-container{
+    color: #125688;
+}
+
+.snapchat-container{
+    height: 100px;
+    width: 100px;
+    margin: auto;
+}
+
+.linkedin-container{
+    color: #007BB5;
+}
+
+.snapcode{
+    background: url("./../../../assets/images/snapcodeBitmoji.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    height: 100%;
+}
+
+.note-container {
+    display: none;
+}
+.bold{
+    font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .note-container {
+    display: initial;
+  }
+}

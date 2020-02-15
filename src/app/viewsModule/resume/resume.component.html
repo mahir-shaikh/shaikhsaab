@@ -1,0 +1,31 @@
+<div class="resume-modal" [class.modalShow]="modalShow"></div>
+<div class="resume animated attachedLeft" [class.slideOutLeft]="isClosing" [class.slideInLeft]="isOpening" [class.expanded]="expanded">
+    <div class="resume-close-btn col-xs-12">
+        <div (click)="onClose()" class="resume-close fa fa-times"></div>
+    </div>
+	<p class="resume-title">Resume </p>
+    <div class="resume-content">
+        
+        <div class="resume-links">
+            <!-- <a (click)="openChild()">Sales and Marketing</a> -->
+            <a class="row resume-link" (click)="expanded=true; activeIndex=0" [class.isActive]="activeIndex==0"><p class="resume-link-text"> Resume</p></a>
+            <!--<a class="row resume-link" (click)="expanded=true; activeIndex=1" [class.isActive]="activeIndex==1"><p class="resume-link-text"> Mail</p></a>
+            <a class="row resume-link" (click)="expanded=true; activeIndex=2" [class.isActive]="activeIndex==2"><p class="resume-link-text"> Reach out</p></a>-->
+            
+        </div>
+        <div class="resume-expansion" *ngIf="expanded" [ngSwitch]="activeIndex">
+            
+            <div class="expanded-content" *ngSwitchCase="0">
+                Resume Component
+            </div>
+
+            <!--<div class="expanded-content" *ngSwitchCase="1">
+                Form Component
+            </div>
+
+            <div class="expanded-content" *ngSwitchCase="2">
+                Maps Component
+            </div>-->
+        </div>
+    </div>
+</div>

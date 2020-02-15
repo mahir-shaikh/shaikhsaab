@@ -1,0 +1,31 @@
+<div class="development-modal" [class.modalShow]="modalShow"></div>
+<div class="development animated attachedRight" [class.slideOutRight]="isClosing" [class.slideInRight]="isOpening" [class.expanded]="expanded">
+    <div class="development-close-btn col-xs-12">
+        <div (click)="onClose()" class="development-close fa fa-times"></div>
+    </div>
+	<p class="development-title">Development </p>
+    <div class="development-content">
+        
+        <div class="development-links">
+            <!-- <a (click)="openChild()">Sales and Marketing</a> -->
+            <a class="row development-link" (click)="expanded=true; activeIndex=0" [class.isActive]="activeIndex==0"><p class="development-link-text"> X</p></a>
+            <a class="row development-link" (click)="expanded=true; activeIndex=1" [class.isActive]="activeIndex==1"><p class="development-link-text"> Y</p></a>
+            <a class="row development-link" (click)="expanded=true; activeIndex=2" [class.isActive]="activeIndex==2"><p class="development-link-text"> Z</p></a>
+            
+        </div>
+        <div class="development-expansion" *ngIf="expanded" [ngSwitch]="activeIndex">
+            
+            <div class="expanded-content glossary" *ngSwitchCase="0">
+                X
+            </div>
+
+            <div class="expanded-content guide" *ngSwitchCase="1">
+                Y
+            </div>
+
+            <div class="expanded-content planning" *ngSwitchCase="2">
+                Z
+            </div>
+        </div>
+    </div>
+</div>

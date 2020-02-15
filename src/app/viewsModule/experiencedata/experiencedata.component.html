@@ -1,0 +1,34 @@
+<div class="wrapper">
+    <div class="fa fa-spinner fa-pulse loading" *ngIf="!Loaded"></div>
+    <section id="ps-container" class="ps-container" *ngIf="Loaded">
+        <div class="ps-contentwrapper">
+            
+            <div *ngFor="let item of ExperienceData;let 'activeIndex' = index; let 'isFirst' = first; let 'isLast' = last" class="ps-content" 
+                [class.active]="activeIndex == currentIndex">
+                <h2>{{item.name}}</h2>
+                <p>{{item.role}}</p>
+                <div class="viewsite"><a [href]="item.websiteUrl" target="_blank">view live website</a></div>
+                <div class="viewsite" *ngIf="item.projectUrl"><a [href]="item.projectUrl" target="_blank">view project</a></div>
+            </div>
+    
+        </div>
+        <div class="ps-slidewrapper">
+            <div class="ps-slides">
+                <div *ngFor="let item of ExperienceData;let 'activeIndex' = index; let 'isFirst' = first; let 'isLast' = last" 
+                    
+                    [class.active]="activeIndex == currentIndex" class="animated " [ngClass]="slideClassName">
+                    <img class="slide-image" [src]="item.bg_img">
+                </div>
+            </div>
+            
+            <nav>
+                <a class="ps-prev" (click)="onPrev()">
+                        <img class="arrow-image" [src]="ExperienceData[currentIndex == 0 ? maxCount : currentIndex - 1].bg_img">
+                    </a>
+                <a class="ps-next" (click)="onNext()">
+                        <img class="arrow-image" [src]="ExperienceData[currentIndex == maxCount ? 0 : currentIndex + 1 ].bg_img">
+                    </a>
+            </nav>
+        </div>
+    </section>
+</div>

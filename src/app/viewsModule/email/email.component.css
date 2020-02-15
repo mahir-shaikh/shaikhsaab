@@ -1,0 +1,82 @@
+.email-form-wrapper{
+    position: absolute;
+    margin: 0;
+    height: 80%;
+    width: 80%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.form{
+    width : 100%;
+}
+
+input:focus,input:active,
+textarea:focus,textarea:active{
+    color: #FFF;
+    background-color : #005495;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill{
+    color: #FFF !important;
+    background-color : #005495 !important;
+}
+
+input,textarea{
+    color : #005495;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color : #d3d3d3;
+}
+
+.submit-button{
+    background-color: #005495;
+    border-radius: 5px;
+    color : #FFF;
+    cursor: pointer;
+}
+
+.text-wrapper{
+    text-align: center;
+    display: flex;
+    justify-content: center;    
+    flex-direction: column;
+}
+
+.heading-text{
+    font-size: 2rem;
+    font-weight: 500;
+    color: #005495;
+    margin: 20px auto;
+}
+
+.sub-heading-text{
+    font-size: 16px;
+    font-weight: 500;
+    color: #aaa;
+    margin: 20px auto;
+}
+
+.button-container{
+    text-align: center;
+}
+
+.result-wrapper{
+    margin: 10px;
+    font-size: 12px;
+    border: 2px solid;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.unsuccessfull{
+    border-color: #900c09;
+}
+
+.successfull{
+    border-color : #449d44;
+}

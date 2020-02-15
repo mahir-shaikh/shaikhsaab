@@ -1,0 +1,51 @@
+<div class="dashboard-wrapper">
+    <div class="dashboard-menu-left">
+        <ul>
+            <li  class="dashboard-nav-link" [routerLink]="['/dashboard', 'about']" routerLinkActive="active">
+                <a>
+                    <span class="dashboard-nav-icon fa fa-user"></span>
+                    <span class="dashboard-nav-text">About</span>
+                </a>
+            </li>
+          <li  class="dashboard-nav-link" [routerLink]="['/dashboard', 'resume']" routerLinkActive="active">
+                <a>
+                    <span class="dashboard-nav-icon fa fa-file-o"></span>
+                    <span class="dashboard-nav-text">Resume</span>
+                </a>
+            </li>
+            <li  class="dashboard-nav-link" [routerLink]="['/dashboard', 'contact']" routerLinkActive="active">
+                <a>
+                    <span class="dashboard-nav-icon fa fa-phone"></span>
+                    <span class="dashboard-nav-text">Contact Me</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="dashboard-middle-router">
+        <router-outlet></router-outlet>
+    </div>
+
+    <div class="dashboard-menu-right">
+        <ul>
+          <li  class="dashboard-nav-link" [routerLink]="['/dashboard', 'experience']" routerLinkActive="active">
+              <a>
+                    <span class="dashboard-nav-icon fa fa-line-chart"></span>
+                    <span class="dashboard-nav-text">Experience</span>
+            </a>
+        </li>
+          <li  class="dashboard-nav-link" [routerLink]="['/dashboard', 'development']" routerLinkActive="active">
+              <a>
+                    <span class="dashboard-nav-icon fa fa-sliders"></span>
+                    <span class="dashboard-nav-text">Development</span>
+                </a>
+        </li>
+          <li  class="dashboard-nav-link" [routerLink]="['/dashboard', 'designs']" routerLinkActive="active">
+              <a>
+                    <span class="dashboard-nav-icon fa fa-paint-brush"></span>
+                    <span class="dashboard-nav-text">Designing</span>
+                </a>
+            </li>
+        </ul>
+    </div>    
+</div>
