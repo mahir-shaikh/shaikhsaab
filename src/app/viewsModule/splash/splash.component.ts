@@ -40,7 +40,7 @@ export class SplashComponent implements OnInit {
     this.progress++;
     setTimeout(()=>{
       this.ShowFalseProgress() 
-    }, 5000);
+    }, 50);
   }
 
   
