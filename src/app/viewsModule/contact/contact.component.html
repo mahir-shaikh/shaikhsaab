@@ -1,18 +1,18 @@
-<div class="contact-modal" [class.modalShow]="modalShow"></div>
-<div class="contact animated attachedLeft" [class.slideOutLeft]="isClosing" [class.slideInLeft]="isOpening" [class.expanded]="expanded">
-    <div class="contact-close-btn col-xs-12">
+<div class="section-modal" [class.modalShow]="modalShow"></div>
+<div class="section animated attachedLeft" [class.slideOutLeft]="isClosing" [class.slideInLeft]="isOpening" [class.expanded]="expanded">
+    <div class="section-close-btn col-xs-12">
         <div (click)="onClose()" class="section-close fa fa-times"></div>
     </div>
-	<p class="contact-title">Contact </p>
-    <div class="contact-content">
+	<p class="section-title">Contact </p>
+    <div class="section-content">
         
-        <div class="contact-links">
+        <div class="section-links">
             <!-- <a (click)="openChild()">Sales and Marketing</a> -->
-            <a class="row contact-link" (click)="expanded=true; activeIndex=0" [class.isActive]="activeIndex==0"><p class="contact-link-text"> Mail</p></a>
-            <a class="row contact-link" (click)="expanded=true; activeIndex=1" [class.isActive]="activeIndex==1"><p class="contact-link-text"> Reach out</p></a>
+            <a class="row section-link" (click)="expanded=true; activeIndex=0" [class.isActive]="activeIndex==0"><p class="section-link-text"> Mail</p></a>
+            <a class="row section-link" (click)="expanded=true; activeIndex=1" [class.isActive]="activeIndex==1"><p class="section-link-text"> Reach out</p></a>
             
         </div>
-        <div class="contact-expansion" *ngIf="expanded" [ngSwitch]="activeIndex">
+        <div class="section-expansion" *ngIf="expanded" [ngSwitch]="activeIndex">
             
             <div class="expanded-content" *ngSwitchCase="0">
                 <app-email></app-email>

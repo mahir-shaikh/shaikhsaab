@@ -1,19 +1,19 @@
-<div class="design-modal" [class.modalShow]="modalShow"></div>
-<div class="design animated attachedRight" [class.slideOutRight]="isClosing" [class.slideInRight]="isOpening" [class.expanded]="expanded">
-    <div class="design-close-btn col-xs-12">
+<div class="section-modal" [class.modalShow]="modalShow"></div>
+<div class="section animated attachedRight" [class.slideOutRight]="isClosing" [class.slideInRight]="isOpening" [class.expanded]="expanded">
+    <div class="section-close-btn col-xs-12">
         <div (click)="onClose()" class="section-close fa fa-times"></div>
     </div>
-	<p class="design-title">Design </p>
-    <div class="design-content">
+	<p class="section-title">Design </p>
+    <div class="section-content">
         
-        <div class="design-links">
+        <div class="section-links">
             <!-- <a (click)="openChild()">Sales and Marketing</a> -->
-            <a class="row design-link" (click)="expanded=true; activeIndex=0" [class.isActive]="activeIndex==0"><p class="design-link-text"> Logos</p></a>
-            <a class="row design-link" (click)="expanded=true; activeIndex=1" [class.isActive]="activeIndex==1"><p class="design-link-text"> Posters</p></a>
-            <a class="row design-link" (click)="expanded=true; activeIndex=2" [class.isActive]="activeIndex==2"><p class="design-link-text"> UnLabled/Undefined</p></a>
+            <a class="row section-link" (click)="expanded=true; activeIndex=0" [class.isActive]="activeIndex==0"><p class="section-link-text"> Logos</p></a>
+            <a class="row section-link" (click)="expanded=true; activeIndex=1" [class.isActive]="activeIndex==1"><p class="section-link-text"> Posters</p></a>
+            <a class="row section-link" (click)="expanded=true; activeIndex=2" [class.isActive]="activeIndex==2"><p class="section-link-text"> UnLabled/Undefined</p></a>
             
         </div>
-        <div class="design-expansion" *ngIf="expanded" [ngSwitch]="activeIndex">
+        <div class="section-expansion" *ngIf="expanded" [ngSwitch]="activeIndex">
             
             <div class="expanded-content glossary" *ngSwitchCase="0">
                 <app-slider [activeNumber]="0"></app-slider>
