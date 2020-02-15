@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-smallScreen',
   templateUrl: './smallScreen.component.html',
-  styleUrls: ['./smallScreen.component.css']
+  styleUrls: ['./smallScreen.component.styl']
 })
 export class SmallScreenComponent implements OnInit {
   private isClosing = false;

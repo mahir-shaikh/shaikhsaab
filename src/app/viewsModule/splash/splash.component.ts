@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-splash',
   templateUrl: './splash.component.html',
-  styleUrls: ['./splash.component.css']
+  styleUrls: ['./splash.component.styl']
 })
 export class SplashComponent implements OnInit {
   bCookieExists : boolean = false;

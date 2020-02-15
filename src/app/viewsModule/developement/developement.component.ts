@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-developement',
   templateUrl: './developement.component.html',
-  styleUrls: ['./developement.component.css']
+  styleUrls: ['./developement.component.styl']
 })
 export class DevelopementComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import {OnDestroy, Component,  OnInit} from '@angular/core';
 @Component({
   selector: 'app-email',
   templateUrl: './email.component.html',
-  styleUrls: ['./email.component.css'],
+  styleUrls: ['./email.component.styl'],
   providers : [ EmailService]
 })
 export class EmailComponent implements OnInit,OnDestroy {

@@ -4,7 +4,7 @@ import { ExpDataService } from './expData.service';
 @Component({
     selector: 'experience-data',
     templateUrl: './experiencedata.component.html',
-    styleUrls: ['./experiencedata.component.css'],
+    styleUrls: ['./experiencedata.component.styl'],
     providers: [ExpDataService]
 })
 export class ExperiencedataComponent implements OnInit {
