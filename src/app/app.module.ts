@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { ViewModule } from './viewsModule/views.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { ViewModule } from './viewsModule/views.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     routing,
     ViewModule
   ],
