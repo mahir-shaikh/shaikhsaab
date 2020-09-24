@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="alert alert-secondary text-center">
+      <h1>ALL POSTS</h1>    
+  </div>
+      
+  <table class="table table-bordered">
+      <thead class="bg-dark text-center">
+      <tr class="text-white">          
+          <th>Title</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Comments Allowed</th>
+          <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody class="text-center" *ngIf="!loading">
+          <tr *ngFor="let post of postData">               
+              <td>{{post?.title}}</td>
+              <td>{{post?.descrition}}</td>
+              <td>{{post?.status}}</td>
+              <td>{{post?.allowComments}}</td>
+              <td class="d-flex">
+                  <button  class="btn btn-sm btn-warning mr-2" (click)="editPost(post)">Edit Post</button>
+
+                  <button class="btn btn-sm btn-danger" (click)="deletePost(post)">Delete Post</button>
+              </td>
+          </tr>    
+      
+      </tbody>
+  </table>
+  
+  
+</div>

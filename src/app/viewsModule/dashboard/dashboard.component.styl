@@ -5,6 +5,8 @@
 	flex-direction: row;
 	justify-content: space-between;
 	overflow: hidden;
+	position: relative;
+	z-index: 1
 }
 
 .dashboard-wrapper .dashboard-nav-link{
@@ -117,3 +119,58 @@
     display: none;
   }
 }
+
+
+video 
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 1;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	transform: translate(-50%, -50%);
+	opacity: 0.2;
+	pointer-events: none;
+	&-overlay
+		opacity: 0.5;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-image: url("../../../assets/images/overlay.png");
+  
+.sub-main
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	transform: translate(-50%, -50%);
+	.heading-text
+		width: 100%;
+		height: 100%;
+		margin: 50% 0px;
+		text-align: center;
+		h1
+			font-size: 6rem;
+  
+.mobile-view
+	display: none;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%,0);
+	bottom: 80px;
+	z-index: 4;
+	@media screen and (max-width: 768px)
+		display: block
+  
+.button-container
+	font-size: 3rem;
+	cursor: pointer;
+	.fa.active
+		display: none;

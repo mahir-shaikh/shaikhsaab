@@ -9,6 +9,11 @@ import { PageNotFoundComponent } from './viewsModule/pageNotFound/pageNotFound.c
 import { DashboardComponent } from './viewsModule/dashboard/dashboard.component';
 import { SplashComponent } from './viewsModule/splash/splash.component';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './admin/login/login.component';
+import { NewPostComponent } from './admin/new-post/new-post.component';
+import { AllPostComponent } from './admin/all-post/all-post.component';
+import { EditPostComponent } from './admin/edit-post/edit-post.component';
 // import { messagesDashRouting } from '../messagesdash/messages-dashboard-routing';
 
 const appRoutes: Routes = [
@@ -55,8 +60,30 @@ const appRoutes: Routes = [
         component : DashboardComponent,
     },
     {
+        path : "admin",
+        component : AdminComponent,
+        children:[
+            {
+                path: 'newpost',
+                component: NewPostComponent
+            },
+            {
+                path: 'allposts',
+                component: AllPostComponent
+            },
+            {
+                path: 'editpost/:id',
+                component: EditPostComponent
+            }
+        ]
+    },
+    {
+        path : "login",
+        component : LoginComponent,
+    },
+    {
         path : "",
-        redirectTo : "/splash",
+        redirectTo : "/dashboard",
         pathMatch : "full"
     },
     {
