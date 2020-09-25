@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { HttpWrapperService } from './http-wrapper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,21 +9,21 @@ import { environment } from 'src/environments/environment';
 export class PostsService {
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpWrapperService) { }
 
   createNewPost(post){
-    return this.http.post(environment.serverURL+"/newpost", post).toPromise();
+    return this.http.postJson("/newpost", post);
   }
 
   getAllPosts(){
-    return this.http.get(environment.serverURL+"/getAllPosts", {}).toPromise();
+    return this.http.getJson("/getAllPosts", null);
   }
 
   getPost(data){
     let obj = {
       id: data
     }
-    return this.http.post(environment.serverURL+"/getPost", obj).toPromise();
+    return this.http.postJson("/getPost", obj);
   }
 
   editPost(id,data){
@@ -30,14 +31,14 @@ export class PostsService {
       id: id,
       post: data
     }
-    return this.http.post(environment.serverURL+"/editPost", obj).toPromise();
+    return this.http.postJson("/editPost", obj);
   }
 
   deletePost(id){
     let obj = {
       id: id
     }
-    return this.http.post(environment.serverURL+"/deletePost", obj).toPromise();
+    return this.http.postJson("/deletePost", obj);
   }
 
 }

@@ -14,6 +14,7 @@ import { LoginComponent } from './admin/login/login.component';
 import { NewPostComponent } from './admin/new-post/new-post.component';
 import { AllPostComponent } from './admin/all-post/all-post.component';
 import { EditPostComponent } from './admin/edit-post/edit-post.component';
+import { AuthGuard } from './admin/guards/auth.guard';
 // import { messagesDashRouting } from '../messagesdash/messages-dashboard-routing';
 
 const appRoutes: Routes = [
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     {
         path : "admin",
         component : AdminComponent,
+        canActivate: [AuthGuard],
         children:[
             {
                 path: 'newpost',
