@@ -13,6 +13,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { HttpAuthenticationInterceptor } from './interceptors/authenticate.http.interceptor';
 import { HttpWrapperService } from './services/http-wrapper.service';
+import { CommentManagementComponent } from './comment-management/comment-management.component';
 
 @NgModule({
   imports: [
@@ -26,14 +27,16 @@ import { HttpWrapperService } from './services/http-wrapper.service';
     AdminComponent,
     NewPostComponent,
     AllPostComponent,
-    EditPostComponent
+    EditPostComponent,
+    CommentManagementComponent
   ],
   declarations: [
     AdminComponent, 
     LoginComponent,
     NewPostComponent,
     AllPostComponent,
-    EditPostComponent
+    EditPostComponent,
+    CommentManagementComponent
   ],
   providers: [
     PostsService, AuthService, AuthGuard, HttpWrapperService,

@@ -1,0 +1,17 @@
+<!-- Comments Form -->
+<div class="card my-4">
+  <h5 class="card-header">Leave a Comment:</h5>
+  <div class="card-body">
+    <form (ngSubmit)="submitComment()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="title" id="title" placeholder="Name"
+          [(ngModel)]="name" required>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" rows="3" name="comment" placeholder="Leave a comment..." [(ngModel)]="comment" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

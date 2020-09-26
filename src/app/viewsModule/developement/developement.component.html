@@ -3,29 +3,20 @@
     <div class="section-close-btn col-xs-12">
         <div (click)="onClose()" class="section-close fa fa-times"></div>
     </div>
-	<p class="section-title">Development </p>
+	<p class="section-title">Blog </p>
     <div class="section-content">
         
         <div class="section-links">
             <!-- <a (click)="openChild()">Sales and Marketing</a> -->
-            <a class="row section-link" (click)="expanded=true; activeIndex=0" [class.isActive]="activeIndex==0"><p class="section-link-text"> X</p></a>
-            <a class="row section-link" (click)="expanded=true; activeIndex=1" [class.isActive]="activeIndex==1"><p class="section-link-text"> Y</p></a>
-            <a class="row section-link" (click)="expanded=true; activeIndex=2" [class.isActive]="activeIndex==2"><p class="section-link-text"> Z</p></a>
+            <a class="row section-link" (click)="showPost(post)" [class.isActive]="activePostId==post._id" *ngFor="let post of postData">
+                <p class="section-link-text">{{post.title}}</p>
+            </a>
             
         </div>
-        <div class="section-expansion" *ngIf="expanded" [ngSwitch]="activeIndex">
-            
-            <div class="expanded-content glossary" *ngSwitchCase="0">
-                X
-            </div>
-
-            <div class="expanded-content guide" *ngSwitchCase="1">
-                Y
-            </div>
-
-            <div class="expanded-content planning" *ngSwitchCase="2">
-                Z
-            </div>
+        <div class="section-expansion" *ngIf="expanded" >
+            <div class="expanded-content glossary" >
+                <app-blog-article [post]="activePost"></app-blog-article>
+            </div>           
         </div>
     </div>
 </div>

@@ -6,6 +6,7 @@ import { routing } from './app.routing';
 import { ViewModule } from './viewsModule/views.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
+import { HttpWrapperService } from './admin/services/http-wrapper.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { AdminModule } from './admin/admin.module';
     ViewModule,
     AdminModule
   ],
-  providers: [],
+  providers: [HttpWrapperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

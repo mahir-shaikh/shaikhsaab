@@ -15,6 +15,7 @@ import { NewPostComponent } from './admin/new-post/new-post.component';
 import { AllPostComponent } from './admin/all-post/all-post.component';
 import { EditPostComponent } from './admin/edit-post/edit-post.component';
 import { AuthGuard } from './admin/guards/auth.guard';
+import { CommentManagementComponent } from './admin/comment-management/comment-management.component';
 // import { messagesDashRouting } from '../messagesdash/messages-dashboard-routing';
 
 const appRoutes: Routes = [
@@ -76,6 +77,10 @@ const appRoutes: Routes = [
             {
                 path: 'editpost/:id',
                 component: EditPostComponent
+            },
+            {
+                path: 'comments',
+                component: CommentManagementComponent
             }
         ]
     },

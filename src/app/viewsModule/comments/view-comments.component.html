@@ -1,0 +1,10 @@
+<!-- Single Comment -->
+<div class="media mb-4" *ngFor="let comment of comments; let i=index">
+  <div class="d-flex mr-3 p-3 rounded-circle profile-image" [style]="'background-color: '+colors[i]">
+    {{getInitials(comment.name)}}
+  </div>
+  <div class="media-body">
+    <h5 class="mt-0">{{comment.name}}</h5>
+    <p>{{comment.body}}</p>
+  </div>
+</div>

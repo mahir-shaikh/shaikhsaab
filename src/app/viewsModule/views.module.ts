@@ -19,13 +19,18 @@ import { SocialComponent } from './social/social.component';
 import { SmallScreenComponent } from './smallScreen/smallScreen.component';
 import { ExperiencedataComponent } from './experiencedata/experiencedata.component';
 import { AboutdataComponent } from './aboutdata/aboutdata.component';
+import { FetchingDataService } from './view-services/fetching-data.service';
+import { BlogArticleComponent } from './blog-article/blog-article.component';
+import { PostingDataService } from './view-services/posting-data.service';
+import { PostCommentComponent } from './comments/post-comments.component';
+import { ViewCommentsComponent } from './comments/view-comments.component';
 
 @NgModule({
     imports: [RouterModule, CommonModule, FormsModule],
     exports: [
         SplashComponent,
         DashboardComponent,
-         AboutComponent,
+        AboutComponent,
         PageNotFoundComponent,
         ExperienceComponent,
         ContactComponent,
@@ -53,8 +58,11 @@ import { AboutdataComponent } from './aboutdata/aboutdata.component';
         SocialComponent,
         SmallScreenComponent,
         ExperiencedataComponent,
-        AboutdataComponent
+        AboutdataComponent,
+        BlogArticleComponent,
+        ViewCommentsComponent,
+        PostCommentComponent
 ],
-    providers: [],
+    providers: [FetchingDataService, PostingDataService],
 })
 export class ViewModule { }
