@@ -7,6 +7,7 @@ import { ViewModule } from './viewsModule/views.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
 import { HttpWrapperService } from './admin/services/http-wrapper.service';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpWrapperService } from './admin/services/http-wrapper.service';
     HttpClientModule,
     routing,
     ViewModule,
-    AdminModule
+    AdminModule,
+    SharedModule
   ],
   providers: [HttpWrapperService],
   bootstrap: [AppComponent]

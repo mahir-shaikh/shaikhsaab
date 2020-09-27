@@ -10,29 +10,11 @@ import { COMMENT } from 'src/app/interfaces/comment.interface';
 })
 export class ViewCommentsComponent implements OnInit {
   @Input() comments: Array<COMMENT>;
-  @Input() postID;
-  colors = []
 
   constructor(
   ) { }
 
   ngOnInit() {
-    for(let i=0; i<this.comments.length;i++){
-      this.colors.push("#"+this.getRandomColor());
-    }
+
   }
-
-  getInitials(name){
-    let initial = ''
-    name.split(' ').map((element: string) => {
-      initial += element.slice(0,1)
-    });
-
-    return initial;
-  }
-
-  getRandomColor(){
-    return Math.floor(Math.random()*16777215).toString(16);
-  }
-
 }

@@ -12,9 +12,9 @@ export class FetchingDataService {
     return this.http.getJson("/getAllPosts", null);
   }
 
-  getPost(data) {
+  getPost(postId) {
     let obj = {
-      id: data
+      id: postId
     }
     return this.http.postJson("/getPost", obj);
   }
