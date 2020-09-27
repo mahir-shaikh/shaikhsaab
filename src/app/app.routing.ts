@@ -79,7 +79,7 @@ const appRoutes: Routes = [
                 component: EditPostComponent
             },
             {
-                path: 'comments',
+                path: 'comments/:id',
                 component: CommentManagementComponent
             }
         ]

@@ -6,5 +6,6 @@ export interface POST {
     description: string,
     _id: string,
     creationDate: Date,
-    comments: Array<COMMENT>
+    comments: Array<COMMENT>,
+    allowComments: Boolean
 }

@@ -35,7 +35,7 @@
 
         <hr>
 
-        <app-post-comment [postID]="post._id" (newCommentSubmitted)="updateComments()"></app-post-comment>
+        <app-post-comment [postID]="post._id" (newCommentSubmitted)="updateComments()" [disableComments]="!post.allowComments"></app-post-comment>
 
         <app-view-comments [comments]="post.comments"></app-view-comments>
 

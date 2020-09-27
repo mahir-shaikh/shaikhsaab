@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../services/posts.service';
+import { AlertService } from 'src/app/shared/alert/alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-post',
@@ -13,7 +15,9 @@ export class NewPostComponent implements OnInit {
   allowComments = true;
 
   constructor(
-    private postService: PostsService
+    private alertService: AlertService,
+    private postService: PostsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -28,7 +32,12 @@ export class NewPostComponent implements OnInit {
       allowComments: this.allowComments
     }
     this.postService.createNewPost(obj).then((response)=>{
-      console.log(response)
+      if(response.success){
+        this.alertService.success(response.message, {autoClose: true, keepAfterRouteChange: true})
+        this.router.navigate(['/admin/allposts']);
+      }else{
+        this.alertService.error(response.message)
+      }
     })
   }
 

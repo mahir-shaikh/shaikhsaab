@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../services/posts.service';
 import { Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AlertService } from 'src/app/shared/alert/alert.service';
 
 @Component({
   selector: 'app-edit-post',
@@ -22,7 +23,8 @@ export class EditPostComponent implements OnInit {
   constructor(
     private postService: PostsService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertService: AlertService
   ) { 
     
   }
@@ -60,7 +62,14 @@ export class EditPostComponent implements OnInit {
       status: this.status,
       allowComments: this.allowComments
     }
-    this.postService.editPost(this.id, updatedPost)
+    this.postService.editPost(this.id, updatedPost).then((response)=>{
+      if(response.success){
+        this.alertService.success(response.message, {autoClose: true, keepAfterRouteChange: true})
+        this.router.navigate(['/admin/allposts']);
+      }else{
+        this.alertService.error(response.message)
+      }
+    })
   }
 
 }

@@ -17,9 +17,14 @@
           <tr *ngFor="let post of postData">               
               <td>{{post?.title}}</td>
               <td>{{post?.description}}</td>
-              <td>{{post?.status}}</td>
-              <td>{{post?.allowComments}}</td>
+              <td class="text-capitalize">{{post?.status}}</td>
+              <td>
+                  <span class="text-success fa fa-check" *ngIf="post?.allowComments"></span>
+                  <span class="text-danger fa fa-times" *ngIf="!post?.allowComments"></span>
+                </td>
               <td class="d-flex">
+                  <button  class="btn btn-sm btn-info mr-2" (click)="viewComments(post)">View Comments</button>
+
                   <button  class="btn btn-sm btn-warning mr-2" (click)="editPost(post)">Edit Post</button>
 
                   <button class="btn btn-sm btn-danger" (click)="deletePost(post)">Delete Post</button>

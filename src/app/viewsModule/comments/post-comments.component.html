@@ -1,5 +1,10 @@
 <!-- Comments Form -->
-<div class="card my-4">
+<div class="well my-4" *ngIf="disableComments">
+  <span class="fa fa-ban"></span>
+  Comments have been disabled by the Author.
+</div>
+
+<div class="card my-4" *ngIf="!disableComments">
   <h5 class="card-header">Leave a Comment:</h5>
   <div class="card-body">
     <form (ngSubmit)="submitComment()">

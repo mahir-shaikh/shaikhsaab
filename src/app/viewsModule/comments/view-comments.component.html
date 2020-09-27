@@ -7,7 +7,7 @@
     <h5 class="mt-0">{{comment.name}}</h5>
     <p *ngIf="comment.commentIsApproved">{{comment.body}}</p>
     <p class="disabled-comment" *ngIf="!comment.commentIsApproved">
-      <i><span class="fa-exclamation-triangle"></span> Comment has been disapproved by the admin.</i>
+      <i><span class="fa fa-exclamation-triangle"></span> Comment has been disapproved by the admin.</i>
     </p>
   </div>
 </div>

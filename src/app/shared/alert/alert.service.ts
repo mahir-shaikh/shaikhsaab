@@ -8,6 +8,10 @@ import { Alert, AlertType } from 'src/app/interfaces/alert.interface';
 export class AlertService {
   private subject = new Subject<Alert>();
   private defaultId = 'default-alert';
+  private defaultOptions = {
+    autoClose: true,
+    keepAfterRouteChange: false
+  };
 
   // enable subscribing to alerts observable
   onAlert(id = this.defaultId): Observable<Alert> {
@@ -15,19 +19,19 @@ export class AlertService {
   }
 
   // convenience methods
-  success(message: string, options?: any) {
+  success(message: string, options = this.defaultOptions) {
     this.alert(new Alert({ ...options, type: AlertType.Success, message }));
   }
 
-  error(message: string, options?: any) {
+  error(message: string, options = this.defaultOptions) {
     this.alert(new Alert({ ...options, type: AlertType.Error, message }));
   }
 
-  info(message: string, options?: any) {
+  info(message: string, options = this.defaultOptions) {
     this.alert(new Alert({ ...options, type: AlertType.Info, message }));
   }
 
-  warn(message: string, options?: any) {
+  warn(message: string, options = this.defaultOptions) {
     this.alert(new Alert({ ...options, type: AlertType.Warning, message }));
   }
 

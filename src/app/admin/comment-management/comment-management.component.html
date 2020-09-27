@@ -1,5 +1,8 @@
 <div class="row">
   <div class="container">
+    <div class="alert alert-secondary text-center">
+      <h1>Comments for "{{post?.title}}"</h1>    
+    </div>
     <div class="col-md-10">
       <table class="table table-bordered text-center text-white">
         <thead class="bg-dark">
@@ -8,6 +11,7 @@
             <th>Comment Body</th>
             <th>Date</th>
             <th>Approve Comments</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
@@ -16,7 +20,12 @@
             <td style="width: auto;">{{comment.name}}</td>
             <td>{{comment.body}}</td>
             <td>{{getDate(comment.creationDate)}}</td>
-            <td>{{comment.commentIsApproved}}</td>
+            <td><app-toggle [isChecked]="comment.commentIsApproved" (stateUpdated)="toggleCommentApproval($event, comment)"></app-toggle></td>
+            <td>
+              <button class="btn btn-sm btn-danger" (click)="deleteComment(comment)">
+                <span class="fa fa-trash"></span>
+              </button>
+            </td>
           </tr>
         </tbody>
 

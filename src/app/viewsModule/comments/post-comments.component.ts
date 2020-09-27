@@ -9,6 +9,7 @@ import { AlertService } from 'src/app/shared/alert/alert.service';
 })
 export class PostCommentComponent implements OnInit {
   @Input() postID = '';
+  @Input() disableComments = false;
   name = '';
   comment = '';
   @Output() newCommentSubmitted =  new EventEmitter();
@@ -27,7 +28,7 @@ export class PostCommentComponent implements OnInit {
         this.newCommentSubmitted.emit();
         this.name = ''
         this.comment = ''
-        this.alertService.success('Comment Added successfully', {autoClose: true})
+        this.alertService.success('Comment Added successfully')
       })
     }
   }
