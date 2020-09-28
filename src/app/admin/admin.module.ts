@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AllPostComponent } from './all-post/all-post.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PostsService } from './services/posts.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
@@ -15,6 +15,10 @@ import { HttpAuthenticationInterceptor } from './interceptors/authenticate.http.
 import { HttpWrapperService } from './services/http-wrapper.service';
 import { CommentManagementComponent } from './comment-management/comment-management.component';
 import { SharedModule } from '../shared/shared.module';
+import { NewUploadComponent } from './uploads/new-upload/new-upload.component';
+import { ViewUploadComponent } from './uploads/view-upload/view-upload.component';
+import { UploadService } from './services/upload.service';
+import { UploadsComponent } from './uploads/uploads.component';
 
 @NgModule({
   imports: [
@@ -22,6 +26,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule
   ],
   exports:[
@@ -30,7 +35,8 @@ import { SharedModule } from '../shared/shared.module';
     NewPostComponent,
     AllPostComponent,
     EditPostComponent,
-    CommentManagementComponent
+    CommentManagementComponent,
+    UploadsComponent
   ],
   declarations: [
     AdminComponent, 
@@ -38,10 +44,13 @@ import { SharedModule } from '../shared/shared.module';
     NewPostComponent,
     AllPostComponent,
     EditPostComponent,
-    CommentManagementComponent
+    CommentManagementComponent,
+    NewUploadComponent,
+    ViewUploadComponent,
+    UploadsComponent
   ],
   providers: [
-    PostsService, AuthService, AuthGuard, HttpWrapperService,
+    PostsService, AuthService, AuthGuard, HttpWrapperService, UploadService,
     {provide: HTTP_INTERCEPTORS , useClass: HttpAuthenticationInterceptor, multi: true}
   ]
 })

@@ -16,6 +16,8 @@ import { AllPostComponent } from './admin/all-post/all-post.component';
 import { EditPostComponent } from './admin/edit-post/edit-post.component';
 import { AuthGuard } from './admin/guards/auth.guard';
 import { CommentManagementComponent } from './admin/comment-management/comment-management.component';
+import { NewUploadComponent } from './admin/uploads/new-upload/new-upload.component';
+import { UploadsComponent } from './admin/uploads/uploads.component';
 // import { messagesDashRouting } from '../messagesdash/messages-dashboard-routing';
 
 const appRoutes: Routes = [
@@ -81,6 +83,10 @@ const appRoutes: Routes = [
             {
                 path: 'comments/:id',
                 component: CommentManagementComponent
+            },
+            {
+                path: 'uploads',
+                component: UploadsComponent
             }
         ]
     },

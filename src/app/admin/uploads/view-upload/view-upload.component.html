@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="card-columns">
+    <div class="card single-card" (click)="setSelection(i)" *ngFor="let image of imageData; let i=index"> 
+      <img class="card-img-top actual-image" [src]="image"> 
+    </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal" #ImageModal>
+  <div class="modal-content-wrapper">
+    <!-- The Close Button -->
+    <span class="close" (click)="closeModal()">&times;</span>
+  
+    <ng-container *ngIf="isModalVisible">
+      <!-- Modal Content (The Image) -->
+      <img class="modal-content" [src]="imageData[imageIndex]">
+    </ng-container>
+  
+    <!-- Modal Caption (Image Text) -->
+    <div class="actions-container text-center">
+      <button class="btn btn-info mr-2" (click)="copyName()" >Copy Name</button>
+      <button class="btn btn-info mr-2" (click)="copyURL()">Copy Absolute Path</button>
+      <button class="btn btn-info mr-2" (click)="copyURL(true)">Copy Relative Path</button>
+      <button class="btn btn-danger" (click)="deleteImage()">Delete</button>
+    </div>
+  </div>
+</div>

@@ -40,8 +40,7 @@ export class HttpWrapperService {
 
     const token = this.authService.getToken();
     const headers: HttpHeaders = new HttpHeaders({
-      'Authorization': token,
-      'Content-Type': 'application/json'
+      'Authorization': token
     });
     req = this.http.post(this.hostname + relativeUrl, body, { headers: headers }).pipe(map((res) => res));
     
