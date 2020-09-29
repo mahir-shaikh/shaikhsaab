@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PostingDataService } from '../view-services/posting-data.service';
-import { AlertService } from 'src/app/shared/alert/alert.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-post-comment',

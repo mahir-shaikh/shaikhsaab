@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PostsService } from '../services/posts.service';
 import { POST } from 'src/app/interfaces/post.interface';
 import { CommentsService } from '../services/comments.service';
-import { AlertService } from 'src/app/shared/alert/alert.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-comment-management',

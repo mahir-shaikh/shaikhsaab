@@ -1,6 +1,10 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { UploadService } from '../../services/upload.service';
 import { environment } from 'src/environments/environment';
+import { debug } from 'util';
+import { CommunicatorService } from 'src/app/shared/services/communicator.service';
+import { EVENTS } from 'src/app/constants';
+import { AlertService } from 'src/app/shared/services/alert.service';
 
 @Component({
   selector: 'app-view-upload',
@@ -13,13 +17,20 @@ export class ViewUploadComponent implements OnInit {
   imageIndex = 0;
   isModalVisible = false;
   @ViewChild('ImageModal', {static: false}) public ImageModalRef: ElementRef;
+  private modal: ElementRef;
 
   constructor(
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private communicator: CommunicatorService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
     this.fetchImages()
+    this.communicator.getEmitter(EVENTS.REFRESH_GALLERY).subscribe(()=>{
+      this.fetchImages();
+    })
+
   }
 
   fetchImages() {
@@ -27,17 +38,30 @@ export class ViewUploadComponent implements OnInit {
       this.imageData = data.map((image) => {
         return this.URL + image;
       })
+    }).catch((err)=>{
+      this.alertService.error(err)
     })
   }
 
   openModal() {
     this.isModalVisible = true;
     this.ImageModalRef.nativeElement.style.display = "block";
+
+    var body = document.getElementsByTagName("body")[0];
+    this.modal = this.ImageModalRef;
+    if (this.modal) {
+      body.appendChild(this.modal.nativeElement);
+    }
   }
 
   closeModal() {
     this.ImageModalRef.nativeElement.style.display = "none";
     this.isModalVisible = false;
+
+    var body = document.getElementsByTagName("body")[0];
+    if (this.modal) {
+        body.removeChild(this.modal.nativeElement);
+    }
   }
 
   setSelection(index){
@@ -62,7 +86,19 @@ export class ViewUploadComponent implements OnInit {
   deleteImage(){
     let currentUrl = this.imageData[this.imageIndex] // "http://localhost:9999/uploads/images/logo_autodesk.png",
     let relativeUrl = currentUrl.slice(this.URL.length)
-    this.uploadService.deleteImage(relativeUrl)
+    this.uploadService.deleteImage(relativeUrl).then((response)=>{
+      if(response.success){
+        this.alertService.success(response.message)
+        this.closeModal();
+        this.fetchImages();
+      }else{
+        this.closeModal();
+        this.alertService.error(response.message)
+      }
+    }).catch((err)=>{
+      this.closeModal();
+      this.alertService.error(err)
+    })
   }
 
   CopyToClipboard(value) {
@@ -72,6 +108,10 @@ export class ViewUploadComponent implements OnInit {
     tempInput.select();
     document.execCommand("copy");
     document.body.removeChild(tempInput);
+  }
+
+  onColorChange(e){
+    // debugger
   }
 
 }

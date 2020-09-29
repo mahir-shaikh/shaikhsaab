@@ -13,11 +13,16 @@
   
     <ng-container *ngIf="isModalVisible">
       <!-- Modal Content (The Image) -->
-      <img class="modal-content" [src]="imageData[imageIndex]">
+      <img class="modal-content" [src]="imageData[imageIndex]" [style.background]="BGValue.value">
     </ng-container>
   
     <!-- Modal Caption (Image Text) -->
-    <div class="actions-container text-center">
+    <div class="actions-container text-center mt-5">
+      <span class="btn btn-light mr-2">
+        <label for="bgColor" class="m-0">Update Background:</label>
+        <input type="color" id="bgColor" name="bgColor" value="#fff" (change)="onColorChange($event)" #BGValue>
+      </span>
+
       <button class="btn btn-info mr-2" (click)="copyName()" >Copy Name</button>
       <button class="btn btn-info mr-2" (click)="copyURL()">Copy Absolute Path</button>
       <button class="btn btn-info mr-2" (click)="copyURL(true)">Copy Relative Path</button>

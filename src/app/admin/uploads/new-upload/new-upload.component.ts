@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { UploadService } from '../../services/upload.service';
-import { AlertService } from 'src/app/shared/alert/alert.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
+import { CommunicatorService } from 'src/app/shared/services/communicator.service';
+import { EVENTS } from 'src/app/constants';
 
 @Component({
   selector: 'app-new-upload',
@@ -16,7 +18,8 @@ export class NewUploadComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private uploadService: UploadService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private communicator: CommunicatorService
   ) { }
 
   ngOnInit() {
@@ -35,12 +38,6 @@ export class NewUploadComponent implements OnInit {
   }
 
   onSubmit() {
-
-    // if (this.image == undefined) {
-    //   alert('Please fill valid details!');
-    //   return false;
-    // }
-
     const formData = new FormData();
     for(let img of this.images){
       formData.append('files', img);
@@ -48,12 +45,18 @@ export class NewUploadComponent implements OnInit {
 
 
    this.uploadService.uploadImage(formData).then((response)=>{
-    if(response.succes){
+    if(response.success){
       this.alertService.success(response.message)
+      this.communicator.trigger(EVENTS.REFRESH_GALLERY)
       this.images = undefined
+      this.fileInputLabel = ''
     }
   }).catch((err)=>{
-    this.alertService.error(err.message)
+    if(err.message){
+      this.alertService.error(err.message)
+    }else{
+      this.alertService.error(err)
+    }
    })
   }
 
