@@ -18,6 +18,7 @@ import { AuthGuard } from './admin/guards/auth.guard';
 import { CommentManagementComponent } from './admin/comment-management/comment-management.component';
 import { NewUploadComponent } from './admin/uploads/new-upload/new-upload.component';
 import { UploadsComponent } from './admin/uploads/uploads.component';
+import { ExperienceManagementComponent } from './admin/experience-management/experience-management.component';
 // import { messagesDashRouting } from '../messagesdash/messages-dashboard-routing';
 
 const appRoutes: Routes = [
@@ -87,6 +88,10 @@ const appRoutes: Routes = [
             {
                 path: 'uploads',
                 component: UploadsComponent
+            },
+            {
+                path: 'experience',
+                component: ExperienceManagementComponent
             }
         ]
     },

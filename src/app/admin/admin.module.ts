@@ -19,6 +19,7 @@ import { NewUploadComponent } from './uploads/new-upload/new-upload.component';
 import { ViewUploadComponent } from './uploads/view-upload/view-upload.component';
 import { UploadService } from './services/upload.service';
 import { UploadsComponent } from './uploads/uploads.component';
+import { ExperienceManagementComponent } from './experience-management/experience-management.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { UploadsComponent } from './uploads/uploads.component';
     AllPostComponent,
     EditPostComponent,
     CommentManagementComponent,
-    UploadsComponent
+    UploadsComponent,
+    ExperienceManagementComponent
   ],
   declarations: [
     AdminComponent, 
@@ -47,7 +49,8 @@ import { UploadsComponent } from './uploads/uploads.component';
     CommentManagementComponent,
     NewUploadComponent,
     ViewUploadComponent,
-    UploadsComponent
+    UploadsComponent,
+    ExperienceManagementComponent
   ],
   providers: [
     PostsService, AuthService, AuthGuard, HttpWrapperService, UploadService,

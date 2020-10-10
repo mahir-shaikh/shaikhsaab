@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpDataService } from './expData.service';
+import { FetchingDataService } from '../view-services/fetching-data.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'experience-data',
@@ -8,22 +11,34 @@ import { ExpDataService } from './expData.service';
     providers: [ExpDataService]
 })
 export class ExperiencedataComponent implements OnInit {
-    private Loaded: boolean = false;
-    private currentIndex: number = 0;
-    private maxCount: number;
-    private contentClassName: string = "";
-    private slideClassName: string = "";
+    URL = environment.serverURL + '/';
+    Loaded: boolean = false;
+    currentIndex: number = 0;
+    maxCount: number;
+    contentClassName: string = "";
+    slideClassName: string = "";
     ExperienceData = [];
 
-    constructor(private expDataService: ExpDataService) { }
+    // constructor(private expDataService: ExpDataService) { }
+    constructor(
+        private dataFetchingService: FetchingDataService,
+        private alertService: AlertService
+    ) { }
 
     ngOnInit() {
         this.Loaded = false;
-        setTimeout(() => {
-            this.ExperienceData = this.expDataService.getExperienceData();
+        // setTimeout(() => {
+        //     this.ExperienceData = this.expDataService.getExperienceData();
+        //     this.maxCount = this.ExperienceData.length - 1;
+        //     this.Loaded = true;
+        // }, 3000);
+        this.dataFetchingService.getExperience().then((data)=>{
+            this.ExperienceData = data
             this.maxCount = this.ExperienceData.length - 1;
             this.Loaded = true;
-        }, 3000);
+        }).catch(()=>{
+            this.alertService.error("Error fetching data")
+        })
     }
 
     onNext() {

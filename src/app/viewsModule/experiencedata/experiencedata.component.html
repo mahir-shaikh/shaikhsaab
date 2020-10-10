@@ -17,16 +17,16 @@
                 <div *ngFor="let item of ExperienceData;let 'activeIndex' = index; let 'isFirst' = first; let 'isLast' = last" 
                     
                     [class.active]="activeIndex == currentIndex" class="animated " [ngClass]="slideClassName">
-                    <img class="slide-image" [src]="item.bg_img">
+                    <img class="slide-image" [src]="URL + item.bg_img">
                 </div>
             </div>
             
             <nav>
                 <a class="ps-prev" (click)="onPrev()">
-                        <img class="arrow-image" [src]="ExperienceData[currentIndex == 0 ? maxCount : currentIndex - 1].bg_img">
+                        <img class="arrow-image" [src]="URL + ExperienceData[currentIndex == 0 ? maxCount : currentIndex - 1].bg_img">
                     </a>
                 <a class="ps-next" (click)="onNext()">
-                        <img class="arrow-image" [src]="ExperienceData[currentIndex == maxCount ? 0 : currentIndex + 1 ].bg_img">
+                        <img class="arrow-image" [src]="URL + ExperienceData[currentIndex == maxCount ? 0 : currentIndex + 1 ].bg_img">
                     </a>
             </nav>
         </div>

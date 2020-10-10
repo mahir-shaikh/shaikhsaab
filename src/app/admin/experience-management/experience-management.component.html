@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="alert alert-secondary text-center">
+    <h1>Experience</h1>
+  </div>
+  <!-- <table class="table table-bordered">
+      <thead class="bg-dark text-center">
+      <tr class="text-white">
+          <th>Index</th>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Description</th>
+          <th>Website</th>
+          <th>Image</th>
+          <th>Demo</th>
+          <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody class="text-center">
+          <tr *ngFor="let data of localJSON; let i=index">               
+              <td>{{data?.id}}</td>
+              <td>{{data?.name}}</td>
+              <td>{{data?.role}}</td>
+              <td>{{data?.description}}</td>
+              <td>{{data?.websiteUrl}}</td>
+              <td>{{data?.bg_img}}</td>
+              <td>{{data?.demo_links | json}}</td>
+              <td class="d-flex">
+                  <button  class="btn btn-sm btn-warning mr-2" (click)="setActiveIndex(i)">
+                    <span class="fa fa-pencil-square-o"></span>
+                  </button>
+                  <button class="btn btn-sm btn-danger" (click)="deleteRow(i)">
+                    <span class="fa fa-trash-o"></span>
+                  </button>
+              </td>
+          </tr>    
+      
+      </tbody>
+  </table> -->
+
+  <div class="view-panel row animated" *ngIf="activeIndex == -1">
+    <div class="card-contianer p-0 col-sm-4" *ngFor="let data of localJSON; let i=index">
+      <div class="card m-2">
+        <img [src]="URL+data.bg_img" class="card-img-top p-2">
+        <div class="card-body">
+          <h5 class="card-title">{{data.name}}</h5>
+          <p class="card-text"><b>Role:</b> {{data.role}}</p>
+          <p class="card-text" *ngIf="data.description"><b>Description:</b> {{data.description}}</p>
+        </div>
+        <ul class="list-group list-group-flush p-2">
+          <a href="{{data.websiteUrl}}" target="_blank" class="card-link">Website</a>
+          <li class="list-group-item" *ngFor="let link of data.demo_links;let demoIdx = index">
+            <a href="{{link}}" target="_blank">Demo {{demoIdx+1}}</a>
+          </li>
+        </ul>
+        <div class="card-footer text-center">
+          <button class="btn btn-sm btn-warning mr-2" (click)="setActiveIndex(i)">
+            <span class="fa fa-pencil-square-o"></span>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteRow(i)">
+            <span class="fa fa-trash-o"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-contianer p-0 col-sm-4">
+      <div class="addnew-card card m-2">
+        <div class="card-body" (click)="addRow()">
+          <button class="btn btn-sm btn-danger">
+            <span class="fa fa-plus fa-2x"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-contianer p-0 col-sm-12" *ngIf="changesDetected()">
+      <div class="sync-card card m-2">
+        <div class="card-body" >
+          Changes detected that have not been synced yet. 
+          <button class="btn btn-sm btn-success" (click)="syncData()">
+            Sync data
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="edit-panel row" *ngIf="activeIndex != -1">
+    <!-- <div class="">
+        <div class="">
+          <textarea style="background-color:#999;color:white;width:100%" [(ngModel)]='editableJsonString'></textarea>
+        </div>
+        <div class="" *ngIf="invalidJson">
+            INVALID JSON. Please use Jsonlint.com to verify the Json.
+        </div>
+      </div> -->
+
+    <div class="card-contianer p-0 col-sm-12">
+      <div class="card m-2">
+        <img [src]="URL+editableJson.bg_img" class="card-img-top p-2">
+        <div class="card-body">
+          <h5 class="card-title" contenteditable="true" [(contenteditableModel)]="editableJson.name"></h5>
+          <p class="card-text"><b>Role:</b>
+            <span contenteditable="true" [(contenteditableModel)]="editableJson.role"></span>
+          </p>
+          <p class="card-text"><b>Description:</b>
+            <span contenteditable="true" [(contenteditableModel)]="editableJson.description"></span>
+          </p>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><b>Website:</b> 
+            <span contenteditable="true" [(contenteditableModel)]="editableJson.websiteUrl"></span>
+          </p>
+
+
+          <p class="card-text" *ngFor="let link of editableJson.demo_links;let demoIdx = index">
+            <a class="fa fa-times" (click)="deleteDemoLink(demoIdx)"></a>
+            <b>Demo {{demoIdx+1}}:</b> 
+            <span contenteditable="true" [(contenteditableModel)]="link"></span>
+          </p>
+
+          <p class="card-text">
+            <button (click)="addNewDemoLink()">Add New Demo Link</button>
+          </p>
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-sm btn-success mr-2" (click)="saveData()">
+            <span class="fa fa-check"></span>
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="deleteRow(activeIndex - 1)">
+            <span class="fa fa-trash-o"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- {{editableJson | json}} -->
+  </div>
+</div>

@@ -1,0 +1,74 @@
+.editable-row
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid gray;
+    border-top: 0px;
+    &:first-child
+        border-top: 1px solid gray;
+    &:nth-child(odd)
+        background-color: #f2f2f2;
+
+.data-header,.data-row
+    flex: 1;
+
+.page-wrapper
+    height: calc(100vh - 70px);
+    width: 100vw;
+    margin: 0;
+    padding-top: 0;
+    overflow: hidden;
+
+.right-col,.left-col
+    border: 1px solid gray;
+    overflow: auto;
+    height: 100%;
+
+.nothing-selected
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+
+.update-btn-cont
+    text-align: center;
+    
+.header-container
+    text-align: right;
+
+.addnew-card
+    border: 2px dashed;
+    .card-body
+        display: flex
+        align-items: center;
+        justify-content: center;
+        cursor pointer
+        button
+            height: 50px;
+            width: 50px;
+            padding: 0
+            border-radius: 50%
+
+.view-panel
+    .card-contianer
+        display: flex
+    .card
+        flex 1
+        background #f7f7f7
+        .card-img-top
+            max-width 150px
+            max-height: 150px
+
+.edit-panel
+    .card-contianer
+        display: flex
+    .card
+        flex 1
+        background #f7f7f7
+        .card-img-top
+            max-width 300px
+            max-height: 300px
+        
+
+*[contenteditable=true]
+    padding: 5px

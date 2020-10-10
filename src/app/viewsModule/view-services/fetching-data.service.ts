@@ -19,4 +19,8 @@ export class FetchingDataService {
     return this.http.postJson("/getPost", obj);
   }
 
+  getExperience() {
+    return this.http.getJson("/getExperience", null);
+  }
+
 }
