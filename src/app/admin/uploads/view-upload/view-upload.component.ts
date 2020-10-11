@@ -1,10 +1,11 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { UploadService } from '../../services/upload.service';
 import { environment } from 'src/environments/environment';
 import { debug } from 'util';
 import { CommunicatorService } from 'src/app/shared/services/communicator.service';
 import { EVENTS } from 'src/app/constants';
 import { AlertService } from 'src/app/shared/services/alert.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-view-upload',
@@ -12,17 +13,28 @@ import { AlertService } from 'src/app/shared/services/alert.service';
   styleUrls: ['./view-upload.component.styl']
 })
 export class ViewUploadComponent implements OnInit {
+  @Input() isFileChooser = false;
+  @Output() fileSelected = new EventEmitter();
+
   imageData: Array<String>
   URL = environment.serverURL + "/";
   imageIndex = 0;
   isModalVisible = false;
   @ViewChild('ImageModal', {static: false}) public ImageModalRef: ElementRef;
-  private modal: ElementRef;
+  // private modal: ElementRef;
+  modalRef: BsModalRef;
+  modalConfig = {
+    backdrop: true,
+    ignoreBackdropClick: true,
+    class: 'modal-lg image-details',
+    keyboard: true
+  };
 
   constructor(
     private uploadService: UploadService,
     private communicator: CommunicatorService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit() {
@@ -44,23 +56,27 @@ export class ViewUploadComponent implements OnInit {
   }
 
   openModal() {
+    // this.ImageModalRef.nativeElement.style.display = "block";
+    
+    // var body = document.getElementsByTagName("body")[0];
+    // this.modal = this.ImageModalRef;
+    // if (this.modal) {
+      //   body.appendChild(this.modal.nativeElement);
+      // }
     this.isModalVisible = true;
-    this.ImageModalRef.nativeElement.style.display = "block";
-
-    var body = document.getElementsByTagName("body")[0];
-    this.modal = this.ImageModalRef;
-    if (this.modal) {
-      body.appendChild(this.modal.nativeElement);
-    }
+    this.modalRef = this.modalService.show(this.ImageModalRef, this.modalConfig);
   }
 
   closeModal() {
-    this.ImageModalRef.nativeElement.style.display = "none";
+    // this.ImageModalRef.nativeElement.style.display = "none";
+    
+    // var body = document.getElementsByTagName("body")[0];
+    // if (this.modal) {
+      //     body.removeChild(this.modal.nativeElement);
+      // }
     this.isModalVisible = false;
-
-    var body = document.getElementsByTagName("body")[0];
-    if (this.modal) {
-        body.removeChild(this.modal.nativeElement);
+    if(this.modalRef){
+      this.modalRef.hide();
     }
   }
 
@@ -112,6 +128,15 @@ export class ViewUploadComponent implements OnInit {
 
   onColorChange(e){
     // debugger
+  }
+
+  selectImage(){
+    this.closeModal();
+    
+    let currentUrl = this.imageData[this.imageIndex] // "http://localhost:9999/uploads/images/logo_autodesk.png",
+    currentUrl = currentUrl.slice(this.URL.length)
+
+    this.fileSelected.emit(currentUrl);
   }
 
 }

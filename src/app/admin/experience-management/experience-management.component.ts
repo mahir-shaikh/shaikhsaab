@@ -10,7 +10,7 @@ import { AlertService } from 'src/app/shared/services/alert.service';
   styleUrls: ['./experience-management.component.styl']
 })
 export class ExperienceManagementComponent implements OnInit {
-  URL = environment.serverURL+"/";
+  URL = environment.serverURL + "/";
 
   serverJSON: Array<EXPERIENCE>
   localJSON: Array<EXPERIENCE>
@@ -31,11 +31,11 @@ export class ExperienceManagementComponent implements OnInit {
     this.getData()
   }
 
-  getData(){
-    this.experienceService.getExperience().then((data)=>{
+  getData() {
+    this.experienceService.getExperience().then((data) => {
       this.serverJSON = data;
-      this.localJSON = this.serverJSON.slice(); // add slice to create a copy
-    }).catch((err)=>{
+      this.localJSON = this.copyArray(this.serverJSON)//this.serverJSON.slice(); // add slice to create a copy
+    }).catch((err) => {
       this.alertService.error(err)
     })
   }
@@ -65,7 +65,8 @@ export class ExperienceManagementComponent implements OnInit {
   setActiveIndex(index) {
     this.activeIndex = index;
     // this.editableJsonString = JSON.stringify(this.localJSON[this.activeIndex], null, "\t");
-    this.editableJson = this.localJSON[this.activeIndex];
+    let newArr = this.copyArray(this.localJSON)
+    this.editableJson = newArr[this.activeIndex];
   }
 
   saveData() {
@@ -76,7 +77,7 @@ export class ExperienceManagementComponent implements OnInit {
       this.activeIndex = -1;
       this.activeSection = -1;
 
-      
+
       // localStorage.setItem('sampleJson', JSON.stringify(this.sampleJson));
     }
     catch (e) {
@@ -85,27 +86,46 @@ export class ExperienceManagementComponent implements OnInit {
     };
   }
 
-  addNewDemoLink(){
+  addNewDemoLink() {
     this.editableJson.demo_links.push("www.demo.com")
   }
 
-  deleteDemoLink(i){
+  deleteDemoLink(i) {
     this.editableJson.demo_links.splice(i, 1)
   }
 
-  syncData(){
-    this.experienceService.setExperience(this.localJSON).then((response)=>{
-      if(response.success){
+  syncData() {
+    this.experienceService.setExperience(this.localJSON).then((response) => {
+      if (response.success) {
         this.alertService.success(response.message)
-        this.serverJSON = this.localJSON.slice(); // add slice to create a copy instead of copying as a reference
+        this.serverJSON = this.copyArray(this.localJSON)//this.localJSON.slice(); // add slice to create a copy instead of copying as a reference
       }
-    }).catch((err)=>{
+    }).catch((err) => {
       this.alertService.error(err)
     })
   }
 
-  changesDetected(){
+  changesDetected() {
     return JSON.stringify(this.serverJSON) != JSON.stringify(this.localJSON);
+  }
+
+  updateImage(filePath) {
+    this.editableJson.bg_img = filePath;
+    console.log(this.localJSON)
+    console.log(this.serverJSON)
+  }
+
+  copyArray(oldArray) {
+    var newArray = []; // create empty array to hold copy
+
+    for (var i = 0, len = oldArray.length; i < len; i++) {
+      newArray[i] = {}; // empty object to hold properties added below
+      for (var prop in oldArray[i]) {
+        newArray[i][prop] = oldArray[i][prop]; // copy properties from oldArray to newArray
+      }
+    }
+
+    return newArray;
   }
 
 }

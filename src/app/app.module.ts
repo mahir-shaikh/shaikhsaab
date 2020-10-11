@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminModule } from './admin/admin.module';
 import { HttpWrapperService } from './admin/services/http-wrapper.service';
 import { SharedModule } from './shared/shared.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SharedModule } from './shared/shared.module';
     routing,
     ViewModule,
     AdminModule,
-    SharedModule
+    SharedModule,
+    ModalModule.forRoot()
   ],
   providers: [HttpWrapperService],
   bootstrap: [AppComponent]

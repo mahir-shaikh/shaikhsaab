@@ -96,6 +96,7 @@
 
     <div class="card-contianer p-0 col-sm-12">
       <div class="card m-2">
+        <app-file-chooser (fileSelected)="updateImage($event)"></app-file-chooser>
         <img [src]="URL+editableJson.bg_img" class="card-img-top p-2">
         <div class="card-body">
           <h5 class="card-title" contenteditable="true" [(contenteditableModel)]="editableJson.name"></h5>

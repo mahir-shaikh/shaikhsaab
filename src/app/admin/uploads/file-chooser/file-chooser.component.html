@@ -1,0 +1,16 @@
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Select file from library</button>
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">File Chooser</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-new-upload></app-new-upload>
+
+    <app-view-upload [isFileChooser]="true" (fileSelected)="onFileSelection($event)"></app-view-upload>
+  </div>
+</ng-template>

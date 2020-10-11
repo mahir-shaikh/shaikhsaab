@@ -20,6 +20,7 @@ import { ViewUploadComponent } from './uploads/view-upload/view-upload.component
 import { UploadService } from './services/upload.service';
 import { UploadsComponent } from './uploads/uploads.component';
 import { ExperienceManagementComponent } from './experience-management/experience-management.component';
+import { FileChooserComponent } from './uploads/file-chooser/file-chooser.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { ExperienceManagementComponent } from './experience-management/experienc
     NewUploadComponent,
     ViewUploadComponent,
     UploadsComponent,
-    ExperienceManagementComponent
+    ExperienceManagementComponent,
+    FileChooserComponent
   ],
   providers: [
     PostsService, AuthService, AuthGuard, HttpWrapperService, UploadService,

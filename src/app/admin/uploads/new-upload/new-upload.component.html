@@ -1,9 +1,4 @@
 <div class="container">
-  <div class="alert alert-secondary text-center">
-    <h3>Upload File</h3>    
-</div>
-
-
   <form class="upload-image-form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
     <!-- <div class="row">
       <div class="col-sm-6">
@@ -20,5 +15,4 @@
     <label class="upload-image-label" for="customFile">{{fileInputLabel || 'Drag your files here or click in this area.'}}</label>
     <button class="upload-image-button btn btn-info" type="submit" [class.disabled]="images == undefined" [disabled]="images == undefined">Upload</button>
   </form>
-
 </div>
