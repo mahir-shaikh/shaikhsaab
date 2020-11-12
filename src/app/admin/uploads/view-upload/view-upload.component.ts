@@ -16,7 +16,7 @@ export class ViewUploadComponent implements OnInit {
   @Input() isFileChooser = false;
   @Output() fileSelected = new EventEmitter();
 
-  imageData: Array<String>
+  imageData: Array<Object> = [];
   URL = environment.serverURL + "/";
   imageIndex = 0;
   isModalVisible = false;
@@ -47,9 +47,18 @@ export class ViewUploadComponent implements OnInit {
 
   fetchImages() {
     this.uploadService.getImages().then((data) => {
-      this.imageData = data.map((image) => {
-        return this.URL + image;
-      })
+      // this.imageData = data.map((image) => {
+      //   return this.URL + image;
+      // })
+      if(data.resources){
+        this.imageData = [];
+        data.resources.map((resource)=>{this.imageData.push(
+          {
+            'url': resource.url,
+            'public_id': resource.public_id
+          }
+        )})
+      }
     }).catch((err)=>{
       this.alertService.error(err)
     })
@@ -85,23 +94,23 @@ export class ViewUploadComponent implements OnInit {
     this.openModal();
   }
 
-  copyName(){
-    let currentUrl = this.imageData[this.imageIndex] // "http://localhost:9999/uploads/images/logo_autodesk.png",
-    let name = currentUrl.slice(currentUrl.lastIndexOf("/")+1)
-    this.CopyToClipboard(name)
-  }
+  // copyName(){
+  //   let currentUrl = this.imageData[this.imageIndex] // "http://localhost:9999/uploads/images/logo_autodesk.png",
+  //   let name = currentUrl.slice(currentUrl.lastIndexOf("/")+1)
+  //   this.CopyToClipboard(name)
+  // }
 
-  copyURL(relative= false){
-    let currentUrl = this.imageData[this.imageIndex] // "http://localhost:9999/uploads/images/logo_autodesk.png",
-    if(relative){
-      currentUrl = currentUrl.slice(this.URL.length)
-    }
-    this.CopyToClipboard(currentUrl)
-  }
+  // copyURL(relative= false){
+  //   let currentUrl = this.imageData[this.imageIndex] // "http://localhost:9999/uploads/images/logo_autodesk.png",
+  //   if(relative){
+  //     currentUrl = currentUrl.slice(this.URL.length)
+  //   }
+  //   this.CopyToClipboard(currentUrl)
+  // }
 
   deleteImage(){
-    let currentUrl = this.imageData[this.imageIndex] // "http://localhost:9999/uploads/images/logo_autodesk.png",
-    let relativeUrl = currentUrl.slice(this.URL.length)
+    let currentObj = this.imageData[this.imageIndex] // "http://localhost:9999/uploads/images/logo_autodesk.png",
+    let relativeUrl = currentObj['public_id']
     this.uploadService.deleteImage(relativeUrl).then((response)=>{
       if(response.success){
         this.alertService.success(response.message)
@@ -133,8 +142,8 @@ export class ViewUploadComponent implements OnInit {
   selectImage(){
     this.closeModal();
     
-    let currentUrl = this.imageData[this.imageIndex] // "http://localhost:9999/uploads/images/logo_autodesk.png",
-    currentUrl = currentUrl.slice(this.URL.length)
+    let currentObj = this.imageData[this.imageIndex] // "http://localhost:9999/uploads/images/logo_autodesk.png",
+    let currentUrl = currentObj['url']
 
     this.fileSelected.emit(currentUrl);
   }

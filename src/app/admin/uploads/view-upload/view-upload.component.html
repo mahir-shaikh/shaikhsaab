@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card-columns">
     <div class="card single-card" (click)="setSelection(i)" *ngFor="let image of imageData; let i=index">
-      <img class="card-img-top actual-image" [src]="image">
+      <img class="card-img-top actual-image" [src]="image['url']">
     </div>
   </div>
 </div>
@@ -15,7 +15,7 @@
   <div class="modal-body">
     <ng-container *ngIf="isModalVisible">
       <!-- Modal Content (The Image) -->
-      <img class="modal-content" [src]="imageData[imageIndex]" [style.background]="BGValue.value">
+      <img class="modal-content" [src]="imageData[imageIndex]['url']" [style.background]="BGValue.value">
     </ng-container>
   </div>
   <div class="modal-footer">
