@@ -40,7 +40,7 @@
   <div class="view-panel row animated" *ngIf="activeIndex == -1">
     <div class="card-contianer p-0 col-sm-4" *ngFor="let data of localJSON; let i=index">
       <div class="card m-2">
-        <img [src]="URL+data.bg_img" class="card-img-top p-2">
+        <img [src]="data.bg_img" class="card-img-top p-2">
         <div class="card-body">
           <h5 class="card-title">{{data.name}}</h5>
           <p class="card-text"><b>Role:</b> {{data.role}}</p>
@@ -97,7 +97,7 @@
     <div class="card-contianer p-0 col-sm-12">
       <div class="card m-2">
         <app-file-chooser (fileSelected)="updateImage($event)"></app-file-chooser>
-        <img [src]="URL+editableJson.bg_img" class="card-img-top p-2">
+        <img [src]="editableJson.bg_img" class="card-img-top p-2">
         <div class="card-body">
           <h5 class="card-title" contenteditable="true" [(contenteditableModel)]="editableJson.name"></h5>
           <p class="card-text"><b>Role:</b>
