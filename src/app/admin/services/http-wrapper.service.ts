@@ -52,9 +52,14 @@ export class HttpWrapperService {
     let req: any;
 
       const token = this.authService.getToken();
-      const headers: HttpHeaders = new HttpHeaders({
-        'Authorization': token
-      });
+      let headers: HttpHeaders;
+      if(token){
+        headers = new HttpHeaders({
+          'Authorization': token
+        });
+      }else{
+        headers = new HttpHeaders();
+      }
       req = this.http.get(this.hostname + relativeUrl + (params ? '?' + params : ''), { headers: headers }).pipe(map((res) => res));
     
     return req.toPromise();

@@ -36,7 +36,7 @@ export class ExperiencedataComponent implements OnInit {
             this.ExperienceData = data
             this.maxCount = this.ExperienceData.length - 1;
             this.Loaded = true;
-        }).catch(()=>{
+        }).catch((err)=>{
             this.alertService.error("Error fetching data")
         })
     }
